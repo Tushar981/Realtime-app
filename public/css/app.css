@@ -1,5 +1,5 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #232323;
 }
@@ -94,7 +94,7 @@ section.status {
 }
 
 .status-box ul li span:after {
-  content: '';
+  content: "";
   position: absolute;
   left: -10px;
   top: 50%;
@@ -107,7 +107,7 @@ section.status {
 }
 
 .status-box ul li span:before {
-  font-family: 'Line Awesome Free';
+  font-family: "Line Awesome Free";
   font-size: 46px;
   font-weight: 600;
   position: absolute;
@@ -118,23 +118,23 @@ section.status {
 }
 
 .status-box ul li:nth-child(1) span:before {
-  content: '\f46c';
+  content: "\f46c";
 }
 
 .status-box ul li:nth-child(2) span:before {
-  content: '\f560';
+  content: "\f560";
 }
 
 .status-box ul li:nth-child(3) span:before {
-  content: '\f818';
+  content: "\f818";
 }
 
 .status-box ul li:nth-child(4) span:before {
-  content: '\f0d1';
+  content: "\f0d1";
 }
 
 .status-box ul li:nth-child(5) span:before {
-  content: '\f582';
+  content: "\f582";
 }
 
 .status-box ul li {
@@ -142,7 +142,7 @@ section.status {
 }
 
 .status-box ul li:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -6px;
