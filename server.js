@@ -27,6 +27,8 @@ mongoose.connection
 
 //set Template engine
 app.use(expressLayout);
+app.use(express.json());
+
 app.set('views', path.join(__dirname, '/resources/views'));
 app.set('view engine', 'ejs');
 
@@ -47,13 +49,21 @@ app.use(
       mongoUrl: process.env.MONGO_CONNECTION_URL,
     }),
     saveUninitialized: false,
-    cookies: { maxage: 1000 * 60 * 60 * 24 },
+    cookies: { maxage: 1000 * 60 * 60 },
   })
 );
 
 app.use(flash());
 //Assets
 app.use(express.static('public')); // the respnse is come from the server in html format but we want in css format
+
+// Global Middleware
+// used for the session at the update the cart value the session is not directly avilable thats why we call the global middleware and its a anonymous function
+
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
 
 // import into web.js
 require('./routes/web')(app);
