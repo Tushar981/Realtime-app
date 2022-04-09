@@ -1,7 +1,7 @@
 {
-  "name": "bakery",
+  "name": "pizza",
   "version": "1.0.0",
-  "description": "This is Bakery realtime web app",
+  "description": "This is pizza realtime web app",
   "main": "index.js",
   "author": "tushar",
   "scripts": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "connect-mongo": "^4.6.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "express-ejs-layouts": "^2.5.1",
