@@ -1,6 +1,7 @@
 //here we add button listner on the buttons
 
 import axios from 'axios';
+import noty from 'noty';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 //let cartCounter = document.getElementById('#cart-counter');
@@ -8,8 +9,12 @@ let addToCart = document.querySelectorAll('.add-to-cart');
 function updateCart(pizza) {
   axios.post('/update-cart', pizza).then((res) => {
     console.log(res);
-    // document.getElementById('cart-counter').innerText = res.data.totalQty;
+
     cartCounter.innerHTML = res.data.totalQty;
+
+    new Noty({
+      text: 'Item added Successfully',
+    }).show();
   });
 }
 
