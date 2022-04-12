@@ -5,7 +5,7 @@ function auth(req, res, next) {
     // isAuthenticated is provided by the passport
     return next();
   }
-  return res.render('auth/login');
+  return next();
 }
 
 module.exports = auth;
