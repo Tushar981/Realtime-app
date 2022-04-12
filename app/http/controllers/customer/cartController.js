@@ -34,16 +34,16 @@ function cartController() {
 
         cart.totalQty = cart.totalQty + 1;
         cart.totalPrice = parseInt(cart.totalPrice) + parseInt(req.body.price);
-        console.log('cart.totalQty' + cart.totalQty);
-        console.log('cart.totalPrice' + cart.totalPrice);
-        console.log('req.body.price' + req.body.price);
+        // console.log('cart.totalQty' + cart.totalQty);
+        // console.log('cart.totalPrice' + cart.totalPrice);
+        // console.log('req.body.price' + req.body.price);
       } else {
         cart.items[req.body._id].qty = cart.items[req.body._id].qty + 1;
         cart.totalQty = cart.totalQty + 1;
         cart.totalPrice = parseInt(cart.totalPrice) + parseInt(req.body.price);
-        console.log('cart.totalQty' + cart.totalQty);
-        console.log('cart.totalPrice' + cart.totalPrice);
-        console.log('req.body.price' + req.body.price);
+        // console.log('cart.totalQty' + cart.totalQty);
+        // console.log('cart.totalPrice' + cart.totalPrice);
+        // console.log('req.body.price' + req.body.price);
       }
 
       return res.json({ totalQty: req.session.cart.totalQty });

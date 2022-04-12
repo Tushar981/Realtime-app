@@ -8,8 +8,10 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const session = require('express-session');
 const MongoDBStore = require('connect-mongo');
-
+const passport = require('passport');
+//const passport = new (require('passport').Strategy)();
 const flash = require('express-flash');
+const { urlencoded } = require('express');
 // The express-flash module exposes getter and setter methods sets the value of a new flash message and adds it to an array of messages of the same type.
 
 // Database connection
@@ -24,13 +26,6 @@ mongoose.connection
   .on('error', (error) => {
     console.log('Connection failed...');
   });
-
-//set Template engine
-app.use(expressLayout);
-app.use(express.json());
-
-app.set('views', path.join(__dirname, '/resources/views'));
-app.set('view engine', 'ejs');
 
 // session Store
 
@@ -53,17 +48,32 @@ app.use(
   })
 );
 
+//passport config
+const passportInit = require('./app/config/passport')(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 //Assets
 app.use(express.static('public')); // the respnse is come from the server in html format but we want in css format
 
 // Global Middleware
+
 // used for the session at the update the cart value the session is not directly avilable thats why we call the global middleware and its a anonymous function
 
 app.use((req, res, next) => {
   res.locals.session = req.session;
+  res.locals.user = req.user; //logged in user will be avilable in front side
   next();
 });
+
+//set Template engine
+app.use(expressLayout);
+app.use(express.json()); // we used this to enable use of json formatting for the data we fatch
+app.use(express.urlencoded({ extended: false }));
+app.set('views', path.join(__dirname, '/resources/views'));
+app.set('view engine', 'ejs');
 
 // import into web.js
 require('./routes/web')(app);
