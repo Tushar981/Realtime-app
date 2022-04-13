@@ -1,7 +1,8 @@
 //here we add button listner on the buttons
 
 import axios from 'axios';
-import noty from 'noty';
+
+import initAdmin from './admin';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 //let cartCounter = document.getElementById('#cart-counter');
@@ -26,3 +27,5 @@ addToCart.forEach((btn) => {
     updateCart(pizza);
   });
 });
+
+initAdmin();
