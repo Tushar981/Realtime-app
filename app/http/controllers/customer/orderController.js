@@ -11,7 +11,7 @@ function orderController() {
         req.flash('error', 'All fields are required ');
         return res.redirect('/cart');
       }
-      console.log('running...');
+
       const order = new Order({
         customerId: req.user._id,
         items: req.session.cart.items,
@@ -37,7 +37,16 @@ function orderController() {
         sort: { createdAt: -1 },
       });
       res.render('customer/order', { orders: orders, moment: moment });
-      console.log(orders);
+    },
+    async show(req, res) {
+      const order = await Order.findById(req.params.id);
+
+      //for authorizing the user
+      if (req.user._id.toString() === order.customerId.toString()) {
+        return res.render('customer/singleOrder', { order });
+      }
+
+      return res.redirect('/');
     },
   };
 }

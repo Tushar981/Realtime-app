@@ -14,9 +14,9 @@ function initAdmin() {
     })
     .then((res) => {
       orders = res.data;
-      console.log(orders);
+
       markup = generateMarkup(orders);
-      console.log(markup);
+
       orderTableBody.innerHTML = markup;
     })
     .catch((err) => {
@@ -48,7 +48,7 @@ function initAdmin() {
                 <td class="border px-4 py-2">${order.address}</td>
                 <td class="border px-4 py-2">
                     <div class="inline-block relative w-64">
-                        <form action="/admin/order/status" method="POST">
+                        <form action="/admin/orders/status" method="POST">
                             <input type="hidden" name="orderId" value="${
                               order._id
                             }">
